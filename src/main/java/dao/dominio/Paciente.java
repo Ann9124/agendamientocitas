@@ -1,6 +1,7 @@
 package dao.dominio;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class Paciente {
@@ -12,6 +13,15 @@ public class Paciente {
     private String telefono;
 
     public Paciente(ResultSet res) {
+        try {
+            this.id = res.getInt("id");
+            this.nombre = res.getString("nombre");
+            this.apellido = res.getString("apellido");
+            this.fechaNaci = res.getDate("fechaNaci");
+            this.telefono = res.getString("telefono");
+        } catch (SQLException ex) {
+            System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }
 
     public Paciente(int id, String nombre, String apellido, Date fechaNaci, String telefono) {

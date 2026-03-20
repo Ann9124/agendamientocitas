@@ -1,6 +1,5 @@
 package dao.datos;
 
-import dao.dominio.PacienteDAO;
 import dao.dominio.Paciente;
 import java.sql.*;
 

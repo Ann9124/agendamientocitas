@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 18/03/2026, 4:35:14 p. m.
-    Author     : sarri
---%>
 
 <%@page import="dao.dominio.Paciente"%>
 <%@page import="dao.datos.PacienteDAO" %>
@@ -21,7 +16,7 @@
             List<Paciente> pacientes = pacienteDao.seleccionarPacientes();
             
             for (Paciente paciente : pacientes) { %>
-            <h2><%=paciente.getNombre()%></h2>    
+            <h2><%=paciente.getNombre()%> <form action="EliminarPaciente"><input type="submit" value="eliminar" /></form></h2>    
         <% } %>
         
         <% // response.sendRedirect("PacienteControl?opcion=consultar");%>
