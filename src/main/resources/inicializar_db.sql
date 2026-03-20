@@ -1,6 +1,6 @@
-drop table medico; 
-drop table paciente;
-drop table citamedica;
+drop table Medico; 
+drop table Paciente;
+drop table CitaMedica;
 
 create table Paciente (id int auto_increment primary key not null, nombre varchar (255) not null, apellido varchar (255) not null, fechaNaci date not null, telefono varchar (255) not null);
 select * from Paciente;
@@ -37,5 +37,5 @@ select * from Paciente;
 
 desc Paciente;
 desc Medico;
-desc citamedica;
-INSERT INTO paciente(nombre,apellido,fechaNaci,telefono) VALUES (?,?,now(),?);
+desc CitaMedica;
+insert into Paciente(nombre,apellido,fechaNaci,telefono) values (?,?,now(),?);

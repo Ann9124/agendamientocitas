@@ -10,7 +10,7 @@ public class Paciente {
     private Date fechaNaci;
     private String telefono;
 
-    public Paciente() {
+    public Paciente(ResultSet res) {
     }
 
     public Paciente(int id, String nombre, String apellido, Date fechaNaci, String telefono) {
