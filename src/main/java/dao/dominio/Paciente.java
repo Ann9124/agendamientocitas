@@ -1,5 +1,6 @@
 package dao.dominio;
 
+import java.sql.ResultSet;
 import java.util.Date;
 
 public class Paciente {

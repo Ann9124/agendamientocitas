@@ -1,18 +1,18 @@
-package dao.dominio;
+package dao.dominio.CitaMedica;
 
 import java.sql.ResultSet;
 import java.util.Date;
 
-public class CitaMedica {
+public class CitaMedicaDAO {
 
     private int id;
     private int idPaciente;
     private int idMedico;
 
-    public CitaMedica(ResultSet res) {
+    public CitaMedicaDAO ResultSet res) {
     }
 
-    public CitaMedica(int id, int idPaciente, int idMedico) {
+    public CitaMedicaDAO(int id, int idPaciente, int idMedico) {
         this.id = id;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
