@@ -1,5 +1,6 @@
 package dao.dominio;
 
+import java.sql.ResultSet;
 import java.util.Date;
 
 public class CitaMedica {
@@ -8,7 +9,7 @@ public class CitaMedica {
     private int idPaciente;
     private int idMedico;
 
-    public CitaMedica() {
+    public CitaMedica(ResultSet res) {
     }
 
     public CitaMedica(int id, int idPaciente, int idMedico) {
@@ -39,5 +40,13 @@ public class CitaMedica {
 
     public void setIdMedico(int idMedico) {
         this.idMedico = idMedico;
+    }
+
+    public int getIdpaciente() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int getIdmedico() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

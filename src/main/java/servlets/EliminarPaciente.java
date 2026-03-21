@@ -30,8 +30,12 @@ public class EliminarPaciente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        String idPaciente = request.getParameter("idPacienteABorrar");
+        
+        System.out.println("Borrando Paciente: " + idPaciente);
         PacienteDAO pacienteDao = new PacienteDAO();
-        pacienteDao.eliminar(1);
+        pacienteDao.eliminar(Integer.parseInt(idPaciente));
         response.sendRedirect("index.jsp");
     }
 
