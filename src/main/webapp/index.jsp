@@ -70,6 +70,21 @@
             </div>
     </body>
     <head>
+    <br>
+    <br>
+        <form action="LoginControl" method="POST">
+    <label>Correo:</label>
+    <input type="text" name="txtCorreo" required>
+    
+    <label>Contraseña:</label>
+    <input type="password" name="txtPass" required>
+    
+    <button type="submit">Ingresar</button>
+    <br>
+    <br>
+</form>
+    </head>
+    <head>
     <table>
         <tr>
         <br>

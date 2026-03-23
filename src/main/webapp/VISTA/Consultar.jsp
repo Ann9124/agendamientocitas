@@ -19,7 +19,7 @@
             </tr>
             </head>
             <body> 
-            <c:forEach item="$(Pacientes)" var="item">
+            <c:forEach item="$Pacientes") var="item">
                 <tr>
                     <td>$(item.id)</td>
                     <td>$(item.nombre)</td>
@@ -37,6 +37,6 @@
                 </form>
          </body>
         
-        <h1>Hello fff World!</h1>
+       
     
 

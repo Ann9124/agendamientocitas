@@ -1,9 +1,11 @@
 package dao.datos;
 
 import dao.dominio.Medico;
+import dao.datos.ConexionBD;
 import java.sql.*;
 import java.util.*;
 
+/*Se crea la clase Medico*/
 public class MedicoDAO {
 
     private static final String SQL_SELECT = "select * from Medico";
@@ -88,5 +90,9 @@ public class MedicoDAO {
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
+    }
+
+    public Object mostrar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

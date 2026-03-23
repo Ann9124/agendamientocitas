@@ -1,16 +1,18 @@
 package dao.datos;
 
 import dao.dominio.Paciente;
+import dao.datos.ConexionBD;
 import java.sql.*;
-
 import java.util.*;
 
+/*Aquí se crea la clase Paciente*/
 public class PacienteDAO {
 
     private static final String SQL_SELECT = "select * from Paciente";
     private static final String SQL_INSERT = "insert into Paciente(nombre,apellido,fechaNaci,telefono) values (?,?,now(),?)";
     private static final String SQL_UPDATE = "update Paciente set nombre=?,apellido=?,telefono=? where id=?";
     private static final String SQL_DELETE = "delete from Paciente where id=?";
+    public Object mostrar;
 
     public PacienteDAO() {
     }
@@ -24,6 +26,7 @@ public class PacienteDAO {
         } catch (SQLException e) {
         }
     }
+
     //*MOSTRAR PACIENTE*//
     public List<Paciente> seleccionarPacientes() throws SQLException {
         List<Paciente> pacientes = new ArrayList<>();
@@ -40,6 +43,7 @@ public class PacienteDAO {
         }
         return pacientes;
     }
+
     //*INSERTAR PACIENTE*//
     public void insertar(Paciente p) {
 
@@ -88,5 +92,9 @@ public class PacienteDAO {
             e.printStackTrace(System.out);
         }
 
+    }
+
+    public Object mostrar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

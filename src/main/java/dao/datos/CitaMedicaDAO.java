@@ -1,9 +1,11 @@
 package dao.datos;
 
 import dao.dominio.CitaMedica;
+import dao.datos.ConexionBD;
 import java.sql.*;
 import java.util.*;
 
+/*Se crea la clase CitaMedica*/
 public class CitaMedicaDAO {
 
     private static final String SQL_SELECT = "select * from CitaMedica";
@@ -91,5 +93,9 @@ public class CitaMedicaDAO {
             e.printStackTrace(System.out);
         }
 
+    }
+
+    public Object mostrar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

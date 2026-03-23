@@ -4,9 +4,33 @@
         <servlet-name>PacienteControl</servlet-name>
         <servlet-class>servlets.PacienteControl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MedicoControl</servlet-name>
+        <servlet-class>servlets.MedicoControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CitaMedicaControl</servlet-name>
+        <servlet-class>servlets.CitaMedicaControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UsuariosControl</servlet-name>
+        <servlet-class>servlets.UsuariosControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PacienteControl</servlet-name>
         <url-pattern>/PacienteControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MedicoControl</servlet-name>
+        <url-pattern>/MedicoControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CitaMedicaControl</servlet-name>
+        <url-pattern>/CitaMedicaControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuariosControl</servlet-name>
+        <url-pattern>/UsuariosControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

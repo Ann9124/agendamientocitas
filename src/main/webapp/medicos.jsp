@@ -8,6 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema IPS</title>
+        <link rel="stylesheet" type="text/css" href="estilos.css">
     </head>
     <body>
 
@@ -30,4 +31,33 @@
 
         <% // response.sendRedirect("MedicoControl?opcion=consultar");%>
     </body>
+</html>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<body>
+    <h1>Mi Agenda de Hoy</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Hora</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${citasDelDia}" var="c">
+                <tr>
+                    <td>${c.nombrePaciente}</td>
+                    <td>${c.hora}</td>
+                    <td>${c.estado}</td>
+                    <td>
+                        <a href="CitaMedicaControl?opcion=atender&id=${c.id}">Atender</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
 </html>

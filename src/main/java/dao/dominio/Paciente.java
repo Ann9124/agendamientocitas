@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+/*Se crea la clase Paciente*/
 public class Paciente {
 
     private int id;
@@ -23,7 +24,7 @@ public class Paciente {
             System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
-
+/*Se definen los atributos de la clase*/
     public Paciente(int id, String nombre, String apellido, Date fechaNaci, String telefono) {
         this.id = id;
         this.nombre = nombre;
@@ -31,7 +32,7 @@ public class Paciente {
         this.fechaNaci = fechaNaci;
         this.telefono = telefono;
     }
-
+/*Los métodos get y set de cada atributo*/
     public int getId() {
         return id;
     }

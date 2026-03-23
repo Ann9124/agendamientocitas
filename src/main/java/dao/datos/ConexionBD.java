@@ -4,6 +4,7 @@ import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/*Se crea la clase conexionBD*/
 public class ConexionBD {
 
     private static final String url = "jdbc:mysql://localhost:3306/ips";

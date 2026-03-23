@@ -1,6 +1,6 @@
-
 package servlets;
 
+import dao.datos.PacienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,30 +10,60 @@ import javax.servlet.http.HttpServletResponse;
 
 public class PacienteControl extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private static final long serialVersionUID = 1L;
+
+    private final String ListP = "Vista/Consultar.jsp";
+    private final PacienteDAO pdao = new PacienteDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PacienteControl</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PacienteControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        String opcion = request.getParameter("opcion");
+
+        switch (opcion) {
+            case "consultar":
+                consultar(request, response);
+                break;
+            case "insertar":
+                break;
+            default:
+                throw new AssertionError();
+            case "actualizar":
+                actualizar(request, response);
+                break;
+            case "eliminar":
+                eliminar(request, response);
+                break;
         }
+    }
+
+    protected void consultar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("pacientes", pdao.mostrar());
+        request.getRequestDispatcher(ListP).forward(request, response);
+    }
+
+    protected void insertar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("pacientes", pdao.mostrar());
+        request.getRequestDispatcher(ListP).forward(request, response);
+    }
+
+    protected void actualizar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("pacientes", pdao.mostrar());
+        request.getRequestDispatcher(ListP).forward(request, response);
+    }
+
+    protected void eliminar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.setAttribute("pacientes", pdao.mostrar());
+        request.getRequestDispatcher(ListP).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

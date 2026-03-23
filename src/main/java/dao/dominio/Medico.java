@@ -1,10 +1,12 @@
 package dao.dominio;
 
 import java.sql.ResultSet;
+import dao.datos.MedicoDAO;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+/*Se crea la clase Medico*/
 public class Medico {
 
     private int id;
@@ -15,7 +17,7 @@ public class Medico {
 
     public Medico() {
     }
-
+/*Se defienen los atributos*/
     public Medico(int id, String nombre, String apellido, Date fechaNaci, String telefono) {
         this.id = id;
         this.nombre = nombre;
@@ -35,7 +37,7 @@ public class Medico {
             System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
-
+/*Métodos get y set de los atributos*/
     public int getId() {
         return id;
     }
