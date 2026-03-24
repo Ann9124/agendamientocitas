@@ -1,4 +1,5 @@
 
+<%@page import="dao.dominio.Usuario"%>
 <%@page import="dao.dominio.Paciente"%>
 <%@page import="dao.datos.PacienteDAO" %>
 <%@page import="java.util.List"%>
@@ -50,29 +51,9 @@
         </style>
     </head>
     <body>    
-        <h1>Sistema IPS</h1>
-        <hr />
-        <a href="doctores.jsp">Doctores</a>
-        <a href="pacientes.jsp">Pacientes</a>
-        <a href="citas.jsp">Citas Medicas</a>
-        <br>
-        <br>
-
-        <div class="dropdown">
-            <button class="boton">Menú Desplegable</button>
-            <div class="links">
-                <a href="#">Consultar</a>
-                <a href="#">Insertar</a>
-                <a href="#">Actualizar</a>
-                <a href="#">Eliminar</a>
-                <br>
-                <br>
-            </div>
-    </body>
-    <head>
-    <br>
-    <br>
-        <form action="LoginControl" method="POST">
+        <%Usuario usuario = (Usuario) (session.getAttribute("Usuarioactivo"));%>
+        <%if (usuario == null){%>
+        <form action="UsuarioControl" method="POST">
     <label>Correo:</label>
     <input type="text" name="txtCorreo" required>
     
@@ -83,8 +64,27 @@
     <br>
     <br>
 </form>
-    </head>
-    <head>
+        <%}else{%>
+        <h1>Sistema IPS</h1>
+        <hr />
+        <a href="doctores.jsp">Doctores</a>
+        <a href="pacientes.jsp">Pacientes</a>
+        <a href="citas.jsp">Citas Medicas</a>
+        <br>
+        <br>
+
+    
+        <div class="dropdown">
+            <button class="boton">Menú Desplegable</button>
+            <div class="links">
+                <a href="#">Consultar</a>
+                <a href="#">Insertar</a>
+                <a href="#">Actualizar</a>
+                <a href="#">Eliminar</a>
+                <br>
+                <br>
+            </div>
+    </body>    
     <table>
         <tr>
         <br>
@@ -94,26 +94,18 @@
         <th>Apellido</th>
         <th>fechaNaci</th>
         <th>Telefono</th>
-    </tr>
-</head>
-<body>    
-<tbody>
-    <tr>
-        <td>1</td>
-        <td>Carmen</td>
-        <td>Perez</td>
-        <td>1999-10-20</td>
-        <td>311425687</td>
-    </tr>
+    </tr>  
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Carmen</td>
+            <td>Perez</td>
+            <td>1999-10-20</td>
+            <td>311425687</td>
+        </tr>
 </table>
 </tbody>              
-</div>
-</body>
-
-<body>
-
-
-
-
+<%}%>
+        
 </body>
 </html>

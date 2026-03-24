@@ -1,25 +1,24 @@
 package dao.datos;
-import dao.dominio.Usuarios;
+import dao.dominio.Usuario;
 import java.sql.*;
 
-public class UsuariosDAO {
+public class UsuarioDAO {
     
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    private String contraseña;
 
-    public Usuarios validar(String correo, String contraseña) {
-        Usuarios u = null;
+    public Usuario validar(String correo, String password) {
+        Usuario u = null;
         String sql = "select * from Usuarios where correo=? and contraseña=?";
         try {
             con = new conexionBD().getConnection(); // Ajusta según el nombre de tu método de conexión
             ps = con.prepareStatement(sql);
             ps.setString(1, correo);
-            ps.setString(2, contraseña);
+            ps.setString(2, password);
             rs = ps.executeQuery();
             if (rs.next()) {
-                u = new Usuarios();
+                u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setCorreo(rs.getString("correo"));
                 u.setRol(rs.getString("rol"));

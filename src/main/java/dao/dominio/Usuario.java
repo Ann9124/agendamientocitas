@@ -1,7 +1,7 @@
 package dao.dominio;
 
 
-public class Usuarios {
+public class Usuario {
     private int id;
     private String correo;
     private String contraseña;
