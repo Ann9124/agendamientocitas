@@ -39,3 +39,22 @@ desc Paciente;
 desc Medico;
 desc CitaMedica;
 insert into Paciente(nombre,apellido,fechaNaci,telefono) values (?,?,now(),?);
+
+
+create table Usuarios(id int auto_increment primary key not null, correo varchar (100) not null, contraseña varchar(100) not null, rol varchar (20) not null);
+select * from Usuarios;
+insert into Usuarios (correo, contraseña,rol) values ('admin@hospital.com','1234','admin');
+
+
+
+insert into usuarios (correo, contraseña, rol) values ('admin@hospital.com', 'admin123', 'admin');
+
+
+insert into usuarios (correo, contraseña, rol) values ('medico@hospital.com', 'medico123', 'medico');
+-- Supongamos que el ID generado fue 2
+insert into medico (nombre, especialidad, id_usuario) values ('Dr. Casa', 'Cardiología', 2);
+
+-- 3. Insertar un Paciente
+insert into usuarios (correo, contraseña, rol) values ('paciente@test.com', 'paciente123', 'paciente');
+-- Supongamos que el ID generado fue 3
+insert into paciente (nombre, id_usuario) values ('Juan Perez', 3);
