@@ -12,7 +12,7 @@ public class LoginDAO {
         List<Login> login = new ArrayList<>();
         try {
             Connection conex = ConexionBD.getconex();
-            try (PreparedStatement sentencia = conex.prepareStatement("select * from Login where correo=? and contraseña=?");) {
+            try (PreparedStatement sentencia = conex.prepareStatement("select * from Usuario where correo=? and contraseña=?");) {
                 sentencia.setString(1, correo);
                 sentencia.setString(2, password);
                 try (ResultSet res = sentencia.executeQuery()) {
