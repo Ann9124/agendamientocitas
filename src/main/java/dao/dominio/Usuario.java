@@ -3,13 +3,13 @@ package dao.dominio;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Login {
+public class Usuario {
 
-    public Login(ResultSet res) {
+    public Usuario(ResultSet res) {
           try {
             this.id = res.getInt("id");
             this.correo = res.getString("correo");
-            this.password = res.getString("contraseña");
+            this.password = res.getString("password");
             this.rol = res.getString("rol");
         } catch (SQLException ex) {
             System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

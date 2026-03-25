@@ -14,10 +14,7 @@
                 <a href="medicos.jsp">Doctores</a>
                 <a href="pacientes.jsp">Pacientes</a>
                 <a href="citas.jsp">Citas Medicas</a>                            
-            </div>
-              <div style="margin-top: 30px;">
-                <img src = "img/hospital.png" alt="Imagen IPS"
-                     style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                <a href="LogoutServlet">Salir</a>                            
             </div>
         </div>
     </body>

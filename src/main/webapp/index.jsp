@@ -1,4 +1,4 @@
-<%@page import="dao.dominio.Login"%>
+<%@page import="dao.dominio.Usuario"%>
 <%@page import="dao.dominio.Paciente"%>
 <%@page import="dao.datos.PacienteDAO" %>
 <%@page import="dao.dominio.CitaMedica" %>
@@ -74,14 +74,13 @@
     </head>
     <body> 
         <h1>Sistema IPS</h1>
-        <hr />
-
+        <hr/>
         <%
             // 1. Intentamos obtener el usuario de la sesión
-            Login login = (Login) session.getAttribute("Usuarioactivo");
+            Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
 
             // 2. Si NO hay usuario, mostramos el formulario de Login
-            if (login == null) {
+            if (usuario == null) {
         %>
         <form action="LoginControl" method="POST">
             <h3>Iniciar Sesión</h3>
@@ -93,11 +92,16 @@
 
             <button type="submit">Ingresar</button>
         </form>
+        <div style="margin-top: 30px;">
+                <img src = "img/hospital.png" alt="Imagen IPS"
+                     style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+            </div>
+        
         <%
         } // 3. Si SI hay usuario (else), mostramos el menú y operaciones
         else {
         %>
-        <p>Bienvenido: <%= login.getCorreo()%>
+        <p>Bienvenido: <%= usuario.getCorreo()%>
         <%@ include file="menu.jsp" %>
         <%
             } // Fin del bloque else

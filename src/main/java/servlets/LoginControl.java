@@ -1,14 +1,14 @@
 package servlets;
 
-import dao.datos.LoginDAO;
-import dao.dominio.Login;
+import dao.datos.UsuarioDAO;
+import dao.dominio.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
 public class LoginControl extends HttpServlet {
 
-    private static final LoginDAO ldao = new LoginDAO();
+    private static final UsuarioDAO udao = new UsuarioDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,10 +17,10 @@ public class LoginControl extends HttpServlet {
         String correo = request.getParameter("txtCorreo");
         String password = request.getParameter("txtPass");
 
-        Login login = ldao.validar(correo, password);
+        Usuario usuario = udao.validar(correo, password);
 
-        if (login != null) {
-            request.getSession().setAttribute("Usuarioactivo", login);
+        if (usuario != null) {
+            request.getSession().setAttribute("Usuarioactivo", usuario);
         }
         response.sendRedirect("index.jsp");
 

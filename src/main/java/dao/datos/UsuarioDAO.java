@@ -1,23 +1,23 @@
 package dao.datos;
 
-import dao.dominio.Login;
+import dao.dominio.Usuario;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginDAO {
+public class UsuarioDAO {
 
-    public Login validar(String correo, String password) {
+    public Usuario validar(String correo, String password) {
 
-        List<Login> login = new ArrayList<>();
+        List<Usuario> usuario = new ArrayList<>();
         try {
             Connection conex = ConexionBD.getconex();
-            try (PreparedStatement sentencia = conex.prepareStatement("select * from Usuario where correo=? and contraseña=?");) {
+            try (PreparedStatement sentencia = conex.prepareStatement("select * from Usuario where correo=? and password=?");) {
                 sentencia.setString(1, correo);
                 sentencia.setString(2, password);
                 try (ResultSet res = sentencia.executeQuery()) {
                     while (res.next()) {
-                        login.add(new Login(res));
+                        usuario.add(new Usuario(res));
                     }
                 }
             }
@@ -26,6 +26,6 @@ public class LoginDAO {
             e.printStackTrace(System.out);
         }
 
-        return login.get(0);
+        return usuario.get(0);
     }
 }
