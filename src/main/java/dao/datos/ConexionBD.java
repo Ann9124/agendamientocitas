@@ -7,13 +7,18 @@ import java.sql.SQLException;
 /*Se crea la clase conexionBD*/
 public class ConexionBD {
 
-    private static final String url = "jdbc:mysql://localhost:3306/ips";
-    private static final String user = "root";
-    private static final String pass = "12345";
+//    private static final String url = "jdbc:mysql://localhost:3306/ips";
+//    private static final String user = "root";
+//    private static final String pass = "12345";
+
+    private static final String url = "jdbc:mariadb://localhost:3306/ips";
+    private static final String user = "admin";
+    private static final String pass = "admin";
 
     public static Connection getconex() throws SQLException {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.maridb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver no encontrado: " + e.getMessage());
         }
