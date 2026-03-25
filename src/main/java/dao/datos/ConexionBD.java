@@ -18,7 +18,7 @@ public class ConexionBD {
     public static Connection getconex() throws SQLException {
         try {
 //            Class.forName("com.mysql.cj.jdbc.Driver");
-            Class.forName("com.maridb.jdbc.Driver");
+            Class.forName("org.mariadb.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver no encontrado: " + e.getMessage());
         }

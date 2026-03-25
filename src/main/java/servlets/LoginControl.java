@@ -19,11 +19,8 @@ public class LoginControl extends HttpServlet {
 
         Login login = ldao.validar(correo, password);
 
-        if (login == null) {
-            // CREAR LA SESIÓN (Muy importante para los permisos)
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("Usuarioactivo", login);
-
+        if (login != null) {
+            request.getSession().setAttribute("Usuarioactivo", login);
         }
         response.sendRedirect("index.jsp");
 

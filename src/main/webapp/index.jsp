@@ -97,16 +97,8 @@
         } // 3. Si SI hay usuario (else), mostramos el menú y operaciones
         else {
         %>
+        <p>Bienvenido: <%= login.getCorreo()%>
         <%@ include file="menu.jsp" %>
-
-        <p>Bienvenido: <%= login.getCorreo()%></p> <div class="dropdown">
-            <button class="boton">Operaciones</button>
-            <div class="links">
-                <a href="medicos.jsp">Doctores</a>
-                <a href="pacientes.jsp">Pacientes</a>
-                <a href="citas.jsp">Citas Medicas</a>
-                <a href="LoginControl">Cerrar Sesión</a> </div>
-        </div>
         <%
             } // Fin del bloque else
         %>
