@@ -11,68 +11,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema IPS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-        <link rel="stylesheet" type="text/css" href="agendamientocitas.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <style type="text/css">
-
-            .boton{
-                background-color: #ffcccc;
-                color: black;
-                border: none;
-                padding: 10px;
-                cursor: pointer;
-            }
-            .links{
-                background-color: #f9f9f9;
-                width: 148px;
-                display:none;
-                position: absolute;
-                z-index: 1;
-            }
-            .links a{
-                text-decoration: none;
-                color: black;
-                display: block;
-                padding: 13px;
-            }
-            .links a:hover{
-                background-color: #f1f1f1;
-            }
-            .dropdown:hover .links{
-                display:block;
-            }
-            .dropdown{
-                position: relative;
-                display: inline-block;
-            }
-            table, th, td{
-                border: 1px solid black;
-                border-collapse: collapse;
-                padding: 10px;
-            }
-            h1 {
-                font-family: "Serif";
-            }
-            h1 {
-                background: #f7f5f5;
-                font-weight: bold;
-                padding: 15px;
-                border-top:2px solid #ff0080;
-                border-bottom:2px solid #ff0080;
-                ;
-            }
-            body {
-                background-color: lightblue;
-            }
-            body {
-                text-align: center;
-            }
-
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
         </style>
     </head>
     <body> 
@@ -87,16 +33,27 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-        <p>Bienvenido: <%= usuario.getCorreo()%>
+<p>Bienvenido al sistema</p>
 <%@ include file="menu.jsp" %>
 <% 
     MedicoDAO medicoDao = new MedicoDAO();
     List<Medico> medicos = medicoDao.seleccionarMedicos();
 %>
 
-<table>
+<form>
+<table style="float:right;">
+    <tr>
+        <td>NOMBRE</td><td><input type="text" /></td>
+        <td>APELLIDO</td><td><input type="text" /></td>
+        <td>FECHA NACIMIENTO</td><td><input type="text" /></td>
+        <td>TELEFONO</td><td><input type="text" /></td>
+    </tr>
+</table>
+</form>
+        
+<table class="table table-hover table-striped">
 
-    <thead>
+    <thead class="table-dark">
         <tr>
             <td>ID</td>
             <td>NOMBRE</td>
@@ -105,6 +62,10 @@
             <td>TELEFONO</td>
         </tr>
     </thead>
+    <br>
+    <br
+        <br>
+    <br>
     <tbody>
 <% 
     for (Medico medico : medicos) {%>
@@ -114,10 +75,11 @@
         <td><%=medico.getApellido()%> </td>
         <td><%=medico.getFechaNaci()%> </td>
         <td><%=medico.getTelefono()%> </td>
-        <td><form action="EliminarMedico" method="POST">
+        <td><form action="MedicoControl" method="POST">
     <button type="submit" class="btn-icon">
         <i class="fa-solid fa-trash"></i>
     </button>
+    <input type="hidden" name="opcion" value="eliminar">
     <input type="hidden" name="idMedicoABorrar" value="<%=medico.getId()%>">
 </form></td>    
             </tr>
