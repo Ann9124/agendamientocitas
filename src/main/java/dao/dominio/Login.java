@@ -7,6 +7,7 @@ public class Login {
 
     public Login(ResultSet res) {
     }
+    
     private int id;
     private String correo;
     private String password;
