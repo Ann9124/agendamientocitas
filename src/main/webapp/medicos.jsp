@@ -32,7 +32,7 @@
         <% // response.sendRedirect("MedicoControl?opcion=consultar");%>
     </body>
 </html>
-
+<!--
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
@@ -60,4 +60,4 @@
         </tbody>
     </table>
 </body>
-</html>
+</html>-->

@@ -1,14 +1,14 @@
 package servlets;
 
-import dao.datos.UsuarioDAO;
-import dao.dominio.Usuario;
+import dao.datos.LoginDAO;
+import dao.dominio.Login;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-public class UsuarioControl extends HttpServlet {
+public class LoginControl extends HttpServlet {
 
-    private static final UsuarioDAO udao = new UsuarioDAO();
+    private static final LoginDAO ldao = new LoginDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,12 +17,12 @@ public class UsuarioControl extends HttpServlet {
         String correo = request.getParameter("txtCorreo");
         String password = request.getParameter("txtPass");
 
-        Usuario usuarios = udao.validar(correo, password);
+        Login login = ldao.validar(correo, password);
 
-        if (usuarios != null) {
+        if (login == null) {
             // CREAR LA SESIÓN (Muy importante para los permisos)
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("Usuarioactivo", usuarios);
+            sesion.setAttribute("Usuarioactivo", login);
 
         }
         response.sendRedirect("index.jsp");

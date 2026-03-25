@@ -1,10 +1,15 @@
 package dao.dominio;
 
+import java.sql.ResultSet;
+import java.sql.SQLDataException;
 
-public class Usuario {
+public class Login {
+
+    public Login(ResultSet res) {
+    }
     private int id;
     private String correo;
-    private String contraseña;
+    private String password;
     private String rol;
 
     public int getId() {
@@ -23,12 +28,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRol() {
@@ -39,6 +44,4 @@ public class Usuario {
         this.rol = rol;
     }
 
-    
-    
 }

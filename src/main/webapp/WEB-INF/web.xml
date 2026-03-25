@@ -13,8 +13,8 @@
         <servlet-class>servlets.CitaMedicaControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UsuarioControl</servlet-name>
-        <servlet-class>servlets.UsuarioControl</servlet-class>
+        <servlet-name>LoginControl</servlet-name>
+        <servlet-class>servlets.LoginControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PacienteControl</servlet-name>
@@ -29,8 +29,8 @@
         <url-pattern>/CitaMedicaControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UsuarioControl</servlet-name>
-        <url-pattern>/UsuarioControl</url-pattern>
+        <servlet-name>LoginControl</servlet-name>
+        <url-pattern>/LoginControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

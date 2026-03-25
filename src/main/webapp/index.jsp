@@ -1,9 +1,11 @@
-
-<%@page import="dao.dominio.Usuario"%>
+<%@page import="dao.dominio.Login"%>
 <%@page import="dao.dominio.Paciente"%>
 <%@page import="dao.datos.PacienteDAO" %>
+<%@page import="dao.dominio.CitaMedica" %>
+<%@page import="dao.datos.CitaMedicaDAO" %>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,24 +15,26 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         <link rel="stylesheet" type="text/css" href="agendamientocitas.css">
         <style type="text/css">
+
             .boton{
                 background-color: #ffcccc;
                 color: black;
                 border: none;
                 padding: 10px;
-                font-size: 14px;
                 cursor: pointer;
+            }
+            .links{
+                background-color: #f9f9f9;
+                width: 148px;
+                display:none;
+                position: absolute;
+                z-index: 1;
             }
             .links a{
                 text-decoration: none;
                 color: black;
                 display: block;
                 padding: 13px;
-            }
-            .links{
-                background-color: #f9f9f9;
-                width: 148px;
-                display:none;
             }
             .links a:hover{
                 background-color: #f1f1f1;
@@ -39,73 +43,73 @@
                 display:block;
             }
             .dropdown{
-                position: absolute;
+                position: relative;
+                display: inline-block;
             }
-            table,th,td{
+            table, th, td{
                 border: 1px solid black;
                 border-collapse: collapse;
-            }
-            th,td{
                 padding: 10px;
             }
+            h1 {
+                font-family: "Serif";
+            }
+            h1 {
+                background: #f7f5f5;
+                font-weight: bold;
+                padding: 15px;
+                border-top:2px solid #ff0080;
+                border-bottom:2px solid #ff0080;
+                ;
+            }
+            body {
+                background-color: lightblue;
+            }
+            body {
+                text-align: center;
+            }
+
+
         </style>
     </head>
-    <body>    
-        <%Usuario usuario = (Usuario) (session.getAttribute("Usuarioactivo"));%>
-        <%if (usuario == null){%>
-        <form action="UsuarioControl" method="POST">
-    <label>Correo:</label>
-    <input type="text" name="txtCorreo" required>
-    
-    <label>Contraseña:</label>
-    <input type="password" name="txtPass" required>
-    
-    <button type="submit">Ingresar</button>
-    <br>
-    <br>
-</form>
-        <%}else{%>
+    <body> 
         <h1>Sistema IPS</h1>
         <hr />
-        <a href="doctores.jsp">Doctores</a>
-        <a href="pacientes.jsp">Pacientes</a>
-        <a href="citas.jsp">Citas Medicas</a>
-        <br>
-        <br>
 
-    
-        <div class="dropdown">
-            <button class="boton">Menú Desplegable</button>
+        <%
+            // 1. Intentamos obtener el usuario de la sesión
+            Login login = (Login) session.getAttribute("Usuarioactivo");
+
+            // 2. Si NO hay usuario, mostramos el formulario de Login
+            if (login == null) {
+        %>
+        <form action="LoginControl" method="POST">
+            <h3>Iniciar Sesión</h3>
+            <label>Correo:</label>
+            <input type="text" name="txtCorreo" required>
+
+            <label>Password:</label>
+            <input type="password" name="txtPass" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+        <%
+        } // 3. Si SI hay usuario (else), mostramos el menú y operaciones
+        else {
+        %>
+        <%@ include file="menu.jsp" %>
+
+        <p>Bienvenido: <%= login.getCorreo()%></p> <div class="dropdown">
+            <button class="boton">Operaciones</button>
             <div class="links">
-                <a href="#">Consultar</a>
-                <a href="#">Insertar</a>
-                <a href="#">Actualizar</a>
-                <a href="#">Eliminar</a>
-                <br>
-                <br>
-            </div>
-    </body>    
-    <table>
-        <tr>
-        <br>
-        <br>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>fechaNaci</th>
-        <th>Telefono</th>
-    </tr>  
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Carmen</td>
-            <td>Perez</td>
-            <td>1999-10-20</td>
-            <td>311425687</td>
-        </tr>
-</table>
-</tbody>              
-<%}%>
-        
-</body>
+                <a href="medicos.jsp">Doctores</a>
+                <a href="pacientes.jsp">Pacientes</a>
+                <a href="citas.jsp">Citas Medicas</a>
+                <a href="LoginControl">Cerrar Sesión</a> </div>
+        </div>
+        <%
+            } // Fin del bloque else
+        %>
+
+    </body>
 </html>

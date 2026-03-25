@@ -1,7 +1,6 @@
 package dao.datos;
 
 import dao.dominio.Medico;
-import dao.datos.ConexionBD;
 import java.sql.*;
 import java.util.*;
 
