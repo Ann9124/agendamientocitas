@@ -1,7 +1,9 @@
 package servlets;
 
 import dao.datos.MedicoDAO;
+import dao.dominio.Medico;
 import java.io.IOException;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,43 +25,45 @@ public class MedicoControl extends HttpServlet {
         String opcion = request.getParameter("opcion");
 
         switch (opcion) {
-            case "consultar":
-                consultar(request, response);
+            case "agregar":
+                insertar(request, response);
                 break;
-            case "insertar":
-                break;
-            default:
-                throw new AssertionError();
+
             case "actualizar":
                 actualizar(request, response);
                 break;
+
             case "eliminar":
                 eliminar(request, response);
                 break;
+
+            default:
+                throw new AssertionError();
         }
 
         response.sendRedirect("medicos.jsp");
     }
 
-    protected void consultar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        request.setAttribute("medicos", mdao.mostrar());
-        request.getRequestDispatcher(ListM).forward(request, response);
-    }
-
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.setAttribute("medicos", mdao.mostrar());
-        request.getRequestDispatcher(ListM).forward(request, response);
+        Medico m = new Medico();
+        m.setNombre(request.getParameter("nombre"));
+        m.setApellido(request.getParameter("apellido"));
+        m.setFechaNaci(new Date());
+        m.setTelefono(request.getParameter("telefono"));
+        mdao.insertar(m);
     }
 
     protected void actualizar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Medico m = mdao.getItem((Integer)(request.getSession().getAttribute("IDMEDICOMODIFICAR")));
+        m.setNombre(request.getParameter("nombre"));
+        m.setApellido(request.getParameter("apellido"));
+        m.setFechaNaci(new Date());
+        m.setTelefono(request.getParameter("telefono"));
+        mdao.actualizar(m);
+        
 
-        request.setAttribute("medicos", mdao.mostrar());
-        request.getRequestDispatcher(ListM).forward(request, response);
     }
 
     protected void eliminar(HttpServletRequest request, HttpServletResponse response)

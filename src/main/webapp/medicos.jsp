@@ -40,16 +40,52 @@
     List<Medico> medicos = medicoDao.seleccionarMedicos();
 %>
 
-<form>
-<table style="float:right;">
-    <tr>
-        <td>NOMBRE</td><td><input type="text" /></td>
-        <td>APELLIDO</td><td><input type="text" /></td>
-        <td>FECHA NACIMIENTO</td><td><input type="text" /></td>
-        <td>TELEFONO</td><td><input type="text" /></td>
-    </tr>
-</table>
-</form>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <form method="POST"
+          action="MedicoControl">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar doctor</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+            <div class="mb-3 mt-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="nombre" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
+            </div>
+            <div class="mb-3">
+                <label for="fecha nacimiento" class="form-label">Fecha Nacimiento:</label>
+                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci">
+            </div>
+            <div class="mb-3">
+                <label for="telefono:" class="form-label">Telefono:</label>
+                <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
+            </div>                    
+      </div>
+     <input type="hidden" name ="opcion" value ="agregar" />
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Confirmar</button>
+      </div>
+     
+    </div>
+  </div>
+        </form>
+</div>
+
+   
         
 <table class="table table-hover table-striped">
 
@@ -81,12 +117,23 @@
     </button>
     <input type="hidden" name="opcion" value="eliminar">
     <input type="hidden" name="idMedicoABorrar" value="<%=medico.getId()%>">
-</form></td>    
+</form></td>
+  <td><form action="medico.jsp" method="POST">
+    <button type="submit" class="btn-icon">
+        <i class="fa-solid fa-pen"></i>
+    </button>
+    <input type="hidden" name="opcion" value="consultar">
+    <input type="hidden" name="idMedicoaConsultar" value="<%=medico.getId()%>">
+</form></td>
+
             </tr>
 <% } %>
     </tbody>
     
-</table>        
+</table>       
+     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Agregar
+  </button>
 
 <%
     } 
