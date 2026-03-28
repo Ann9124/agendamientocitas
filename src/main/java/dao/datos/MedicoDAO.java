@@ -8,7 +8,7 @@ import java.util.*;
 public class MedicoDAO {
 
     private static final String SQL_SELECT = "select * from Medico";
-    private static final String SQL_INSERT = "insert into Medico(nombre,apellido,fechaNaci,telefono) values (?,?,now(),?)";
+    private static final String SQL_INSERT = "insert into Medico(nombre,apellido,telefono) values (?,?,now(),?)";
     private static final String SQL_UPDATE = "update Medico set nombre=?, apellido=?, telefono=? where id=?";
     private static final String SQL_DELETE = "delete from Medico where id=?";
     private static final String SQL_ITEM = "select * from Medico where id=?";

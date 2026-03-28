@@ -11,7 +11,7 @@ public class PacienteDAO {
     private static final String SQL_INSERT = "insert into Paciente(nombre,apellido,fechaNaci,telefono) values (?,?,now(),?)";
     private static final String SQL_UPDATE = "update Paciente set nombre=?,apellido=?,telefono=? where id=?";
     private static final String SQL_DELETE = "delete from Paciente where id=?";
-    public Object mostrar;
+    private static final String SQL_ITEM = "select * from Paciente where id=?";
 
     public PacienteDAO() {
     }
@@ -45,16 +45,16 @@ public class PacienteDAO {
 
     //*INSERTAR PACIENTE*//
     public void insertar(Paciente p) {
-
         try {
             Connection conex = ConexionBD.getconex();
-            PreparedStatement sentencia = conex.prepareStatement(SQL_INSERT);
+            try (PreparedStatement sentencia = conex.prepareStatement(SQL_INSERT)) {
+                sentencia.setString(1, p.getNombre());
+                sentencia.setString(2, p.getApellido());
+                sentencia.setString(3, p.getTelefono());
 
-            sentencia.setString(1, p.getNombre());
-            sentencia.setString(2, p.getApellido());
-            sentencia.setString(3, p.getTelefono());
-            sentencia.executeUpdate();
-
+                sentencia.executeUpdate();
+            }
+            ConexionBD.cerrar(conex);
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
@@ -93,7 +93,26 @@ public class PacienteDAO {
 
     }
 
-    public Object mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Paciente getItem(Integer id) {
+        List<Paciente> pacientes = new ArrayList<>();
+        try {
+            Connection conex = ConexionBD.getconex();
+            try (PreparedStatement sentencia = conex.prepareStatement(SQL_ITEM);) {
+                sentencia.setInt(1, id);
+                try (ResultSet res = sentencia.executeQuery()) {
+                    while (res.next()) {
+                        pacientes.add(new Paciente(res));
+                    }
+                }
+            }
+            ConexionBD.cerrar(conex);
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
+        if (!pacientes.isEmpty()) {
+            return pacientes.get(0);
+        } else {
+            return null; // Si no hay nada, devolvemos null en lugar de romper el programa
+        }
     }
 }

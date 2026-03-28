@@ -14,7 +14,7 @@
 <meta charset="utf-8">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sistema IPS</title>
+<title>Hospital Pedro León Alvarez Diaz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
         </style>
     </head>
     <body> 
-        <h1>Sistema IPS</h1>
+        <h1>Hospital Pedro León Alvarez Diaz</h1>
         <hr />
        
 <%
@@ -96,6 +96,8 @@
             <td>APELLIDO</td>
             <td>FECHA NACIMIENTO</td>
             <td>TELEFONO</td>
+            <td></td>
+            <td></td>
         </tr>
     </thead>
     <br>

@@ -24,7 +24,8 @@ public class Paciente {
             System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
-/*Se definen los atributos de la clase*/
+
+    /*Se definen los atributos de la clase*/
     public Paciente(int id, String nombre, String apellido, Date fechaNaci, String telefono) {
         this.id = id;
         this.nombre = nombre;
@@ -32,7 +33,11 @@ public class Paciente {
         this.fechaNaci = fechaNaci;
         this.telefono = telefono;
     }
-/*Los métodos get y set de cada atributo*/
+
+    public Paciente() {
+    }
+
+    /*Los métodos get y set de cada atributo*/
     public int getId() {
         return id;
     }

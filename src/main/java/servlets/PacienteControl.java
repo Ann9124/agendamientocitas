@@ -1,8 +1,9 @@
 package servlets;
 
 import dao.datos.PacienteDAO;
+import dao.dominio.Paciente;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,48 +23,52 @@ public class PacienteControl extends HttpServlet {
         String opcion = request.getParameter("opcion");
 
         switch (opcion) {
-            case "consultar":
-                consultar(request, response);
-                break;
-            case "insertar":
-                break;
-            default:
-                throw new AssertionError();
+            case "agregar":
+                insertar(request, response);
+                break;   
+                
             case "actualizar":
                 actualizar(request, response);
                 break;
+                
             case "eliminar":
                 eliminar(request, response);
-                break;
+                break;  
+                
+            default:
+               throw new AssertionError();
         }
+        response.sendRedirect("pacientes.jsp");
     }
 
-    protected void consultar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        request.setAttribute("pacientes", pdao.mostrar());
-        request.getRequestDispatcher(ListP).forward(request, response);
-    }
 
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("pacientes", pdao.mostrar());
-        request.getRequestDispatcher(ListP).forward(request, response);
+        Paciente p = new Paciente();
+        p.setNombre(request.getParameter("nombre"));
+        p.setApellido(request.getParameter("apellido"));
+        p.setFechaNaci(new Date());
+        p.setTelefono(request.getParameter("telefono"));
+        pdao.insertar(p);
     }
 
     protected void actualizar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("pacientes", pdao.mostrar());
-        request.getRequestDispatcher(ListP).forward(request, response);
+        Paciente p = pdao.getItem((Integer)(request.getSession().getAttribute("IDPACIENTEMODIFICAR")));
+        p.setNombre(request.getParameter("nombre"));
+        p.setApellido(request.getParameter("apellido"));
+        p.setFechaNaci(new Date());
+        p.setTelefono(request.getParameter("telefono"));
+        pdao.actualizar(p);
     }
 
     protected void eliminar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setAttribute("pacientes", pdao.mostrar());
-        request.getRequestDispatcher(ListP).forward(request, response);
+        Integer idPacienteABorrar = Integer.valueOf(request.getParameter("idPacienteABorrar"));
+        pdao.eliminar(idPacienteABorrar);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ public class MedicoControl extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private final String ListM = "Vista/Consultar.jsp";
     private static final MedicoDAO mdao = new MedicoDAO();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -49,20 +47,17 @@ public class MedicoControl extends HttpServlet {
         Medico m = new Medico();
         m.setNombre(request.getParameter("nombre"));
         m.setApellido(request.getParameter("apellido"));
-        m.setFechaNaci(new Date());
         m.setTelefono(request.getParameter("telefono"));
         mdao.insertar(m);
     }
 
     protected void actualizar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Medico m = mdao.getItem((Integer)(request.getSession().getAttribute("IDMEDICOMODIFICAR")));
+        Medico m = mdao.getItem((Integer) (request.getSession().getAttribute("IDMEDICOMODIFICAR")));
         m.setNombre(request.getParameter("nombre"));
         m.setApellido(request.getParameter("apellido"));
-        m.setFechaNaci(new Date());
         m.setTelefono(request.getParameter("telefono"));
         mdao.actualizar(m);
-        
 
     }
 

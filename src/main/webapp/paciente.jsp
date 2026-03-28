@@ -1,5 +1,5 @@
-<%@page import="dao.dominio.Medico"%>
-<%@page import="dao.datos.MedicoDAO"%>
+<%@page import="dao.dominio.Paciente"%>
+<%@page import="dao.datos.PacienteDAO"%>
 <%@page import="dao.dominio.Usuario"%>
 <%@page import="dao.dominio.Paciente"%>
 <%@page import="dao.datos.PacienteDAO" %>
@@ -36,42 +36,42 @@
 <p>Bienvenido al sistema</p>
 <%@ include file="menu.jsp" %>
 <% 
-    Integer idMedico = Integer.valueOf(request.getParameter("idMedicoaConsultar"));
-    session.setAttribute("IDMEDICOMODIFICAR", idMedico);
-    MedicoDAO medicoDao = new MedicoDAO();
-    Medico medico = medicoDao.getItem(idMedico);
+    Integer idPaciente = Integer.valueOf(request.getParameter("idPacienteaConsultar"));
+    session.setAttribute("IDPACIENTEMODIFICAR", idPaciente);
+    PacienteDAO pacienteDao = new PacienteDAO();
+    Paciente paciente = pacienteDao.getItem(idPaciente);
 %>
 
-    <form method="POST" action="MedicoControl">
+    <form method="POST" action="PacienteControl">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h4 class="modal-title">Editar doctor</h4>
+        <h4 class="modal-title">Editar paciente</h4>
       </div>
 
       <div class="modal-body">
             <div class="mb-3 mt-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="nombre" class="form-control" id="nombre" placeholder="Nombre" name="nombre" value="<%=medico.getNombre()%>">
+                <input type="nombre" class="form-control" id="nombre" placeholder="Nombre" name="nombre" value="<%=paciente.getNombre()%>">
             </div>
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido" value="<%=medico.getApellido()%>">
+                <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido" value="<%=paciente.getApellido()%>">
             </div>
             <div class="mb-3">
                 <label for="fecha nacimiento" class="form-label">Fecha Nacimiento:</label>
-                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci" value="<%=medico.getFechaNaci()%>">
+                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci" value="<%=paciente.getFechaNaci()%>">
             </div>
             <div class="mb-3">
                 <label for="telefono:" class="form-label">Telefono:</label>
-                <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono" value="<%=medico.getTelefono()%>">
+                <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono" value="<%=paciente.getTelefono()%>">
             </div>                    
       </div>
      <input type="hidden" name ="opcion" value ="actualizar" />
       <!-- Modal footer -->
       <div class="modal-footer d-flex gap-3">
-         <a href="medicos.jsp" class="btn btn-outline-danger">Cancelar</a>
+         <a href="pacientes.jsp" class="btn btn-outline-danger">Cancelar</a>
         <button type="submit" class="btn btn-outline-success">Confirmar</button>
       
      </div>

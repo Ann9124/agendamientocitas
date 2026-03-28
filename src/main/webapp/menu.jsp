@@ -9,17 +9,26 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>        
-        <div class="dropdown">        
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-            Opciones
-         </button>
-         <ul class="dropdown-menu">             
-             <li><a class="dropdown-item" href="medicos.jsp">Doctor</a></li>
-             <li><a class="dropdown-item" href="#">Paciente</a></li>
-             <li><a class="dropdown-item" href="#">Salir</a></li>
-         </ul>
-
-        </div>             <br>
-            <br>     
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                     <a class="navbar-brand" href="#">
+                      <img src="img/logo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+                    </a>
+                </li>
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="medicos.jsp">Medico</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="pacientes.jsp">Paciente</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                      <a class="nav-link" href="LogoutServlet">Salir</a>
+                  </li>
+                </ul>
+          </nav>
     </body>
 </html>

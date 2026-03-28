@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sistema IPS</title>
+        <title>>Hospital Pedro León Alvarez Diaz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         <link rel="stylesheet" type="text/css" href="agendamientocitas.css">
@@ -73,15 +73,15 @@
         </style>
     </head>
     <body> 
-        <h1>Sistema IPS</h1>
+        <h1>Hospital Pedro León Alvarez Diaz</h1>
         <hr/>
-        <%
-            // 1. Intentamos obtener el usuario de la sesión
-            Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
+<%
+    // 1. Intentamos obtener el usuario de la sesión
+    Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
 
-            // 2. Si NO hay usuario, mostramos el formulario de Login
-            if (usuario == null) {
-        %>
+    // 2. Si NO hay usuario, mostramos el formulario de Login
+    if (usuario == null) {
+%>
         <form action="LoginControl" method="POST">
             <h3>Iniciar Sesión</h3>
             <label>Correo:</label>
@@ -97,15 +97,22 @@
                      style="width: 250px; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
             </div>
         
-        <%
-        } // 3. Si SI hay usuario (else), mostramos el menú y operaciones
-        else {
-        %>
-        <p>Bienvenido: <%= usuario.getCorreo()%>
-        <%@ include file="menu.jsp" %>
-        <%
-            } // Fin del bloque else
-        %>
+<%
+} // 3. Si SI hay usuario (else), mostramos el menú y operaciones
+else {
+%>
+        <p>Bienvenido al Sistema</p>
+<%@ include file="menu.jsp" %>
+         <div class="d-flex justify-content-center" style="margin-top: 80px;">
+        <img src = "img/imagen2.png" alt="HPLAD"
+             class="img-fluid"
+        style="width: 350px; height: auto; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    </div>
+        <br>
+        <br>    
+<%
+    } // Fin del bloque else
+%>
 
     </body>
 </html>
