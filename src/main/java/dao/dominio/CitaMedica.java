@@ -26,12 +26,6 @@ public class CitaMedica {
         }
     }
 
-    public CitaMedica(int id, String idPaciente, String idMedico) {
-        this.id = id;
-        this.idPaciente = idPaciente;
-        this.idMedico = idMedico;
-    }
-
     public CitaMedica() {
     }
 

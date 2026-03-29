@@ -18,7 +18,7 @@ public class CitaMedicaControl extends HttpServlet {
         String opcion = request.getParameter("opcion");
 
         switch (opcion) {
-            case "Crear":
+            case "crear":
                 insertar(request, response);
                 break;
 
@@ -39,7 +39,7 @@ public class CitaMedicaControl extends HttpServlet {
         cm.setIdPaciente(request.getParameter("idPaciente"));
         cm.setIdMedico(request.getParameter("idMedico"));
         cm.setFechaHora(request.getParameter("fechaHora"));
-        cm.setIdEstadoCita(request.getParameter("idEstadoCita"));
+        cm.setIdEstadoCita("1");
         cmdao.insertar(cm);
     }
 

@@ -33,7 +33,7 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-<p>Bienvenido al sistema</p>
+<p>Bienvenido al sistema <%=usuario.getCorreo()%></p>
 <%@ include file="menu.jsp" %>
 <% 
     PacienteDAO pacienteDao = new PacienteDAO();
@@ -85,8 +85,6 @@
         </form>
 </div>
 
-   
-        
 <table class="table table-hover table-striped">
 
     <thead class="table-dark">

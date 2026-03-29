@@ -1,3 +1,5 @@
+<%@page import="dao.dominio.DetalleCitaMedica"%>
+<%@page import="dao.datos.DetalleCitaMedicaDAO"%>
 <%@page import="dao.dominio.Medico"%>
 <%@page import="dao.datos.MedicoDAO"%>
 <%@page import="dao.dominio.Usuario"%>
@@ -18,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.n/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
         </style>
     </head>
     <body> 
@@ -33,45 +35,46 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-<p><h4>Bienvenido:<%%></h4></p>
+<p><h4>Bienvenido:<%=usuario.getCorreo()%></h4></p>
 <%@ include file="menu.jsp" %>
 <% 
     MedicoDAO medicoDao = new MedicoDAO();
     List<Medico> medicos = medicoDao.seleccionarMedicos();
 %>
-
-<!-- The Modal -->
+<% 
+DetalleCitaMedicaDAO citasDao = new DetalleCitaMedicaDAO();
+List<DetalleCitaMedica> citas = citasDao.listarCitasPorDia("2026-03-28");
+%>
+    
+    
 <div class="modal fade" id="myModal">
     <form method="POST"
           action="MedicoControl">
   <div class="modal-dialog">
     <div class="modal-content">
 
-      <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Agregar doctor</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-
-      <!-- Modal body -->
+    
       <div class="modal-body">
         
             <div class="mb-3 mt-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="nombre" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
             </div>
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
+                <input type="text" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
             </div>
            
             <div class="mb-3">
                 <label for="telefono:" class="form-label">Telefono:</label>
-                <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
+                <input type="text" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
             </div>                    
       </div>
      <input type="hidden" name ="opcion" value ="agregar" />
-      <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
         <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Confirmar</button>
@@ -81,8 +84,6 @@
   </div>
         </form>
 </div>
-
-   
         
 <table class="table table-hover table-striped">
 
@@ -131,7 +132,7 @@
      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     Agregar
   </button>
-
+   
 <%
     } 
 %>
