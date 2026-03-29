@@ -1,3 +1,5 @@
+<%@page import="dao.dominio.ItemSencillo"%>
+<%@page import="dao.datos.ItemSencilloDAO"%>
 <%@page import="dao.dominio.DetalleCitaMedica"%>
 <%@page import="dao.datos.DetalleCitaMedicaDAO"%>
 <%@page import="dao.dominio.Paciente"%>
@@ -40,6 +42,9 @@
             session.setAttribute("IDMEDICOMODIFICAR", idMedico);
             MedicoDAO medicoDao = new MedicoDAO();
             Medico medico = medicoDao.getItem(idMedico);
+            
+            ItemSencilloDAO isDao = new ItemSencilloDAO();
+            List<ItemSencillo> pacientes = isDao.getPacientes();
         %>
 
         <div class="container mt-5 mb-5">
@@ -49,7 +54,7 @@
                         <input type="hidden" name="opcion" value="actualizar" />
                         <div class="card shadow h-100">
                             <div class="card-header bg-primary text-white">
-                                <h4 class="mb-0">Información del Paciente</h4>
+                                <h4 class="mb-0">Información del Médico</h4>
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
@@ -117,15 +122,54 @@
                             </div>
 
                             <div class="card-foot" style="float: right;">  
-                                <button type="button" class="btn btn-primary">
-                                    <i class="bi bi-calendar-plus"></i> Agregar Cita
-                                </button>                                
+            <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-plus me-2"></i>Nueva Cita
+            </button>                              
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+                                    
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form method="POST" action="CitaMedicaControl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Agregar nueva cita</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body">         
+
+                                <div class="mb-3">
+                                    <label for="idPaciente" class="form-label">Paciente</label>
+                                    <select id="idPaciente" name="idPaciente" class="form-select" required>
+                                        <option value="" disabled selected>Seleccione un paciente</option>
+<% for(ItemSencillo item: pacientes) { %>
+                                            <option value="<%=item.getId()%>"><%=item.getNombre()%></option>
+<% } %>
+                                    </select>
+                                </div> 
+
+                                <div class="mb-3">
+                                    <label for="fechaHora" class="form-label">Fecha y Hora</label>
+                                    <input type="datetime-local" class="form-control" id="fechaHora" name="fechaHora" required>
+                                </div>
+                                
+                                <input type="hidden" name="idMedico" value="<%=medico.getId()%>" />
+                                <input type="hidden" name="opcion" value="crearDesdeMedico" />
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-success">Confirmar Cita</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
               
         <% 
             } // Cierre del else

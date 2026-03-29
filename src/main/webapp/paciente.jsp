@@ -1,3 +1,5 @@
+<%@page import="dao.dominio.ItemSencillo"%>
+<%@page import="dao.datos.ItemSencilloDAO"%>
 <%@page import="dao.dominio.DetalleCitaMedica"%>
 <%@page import="dao.datos.DetalleCitaMedicaDAO"%>
 <%@page import="dao.dominio.Paciente"%>
@@ -40,6 +42,10 @@
     session.setAttribute("IDPACIENTEMODIFICAR", idPaciente);
     PacienteDAO pacienteDao = new PacienteDAO();
     Paciente paciente = pacienteDao.getItem(idPaciente);
+                
+            ItemSencilloDAO isDao = new ItemSencilloDAO();
+            List<ItemSencillo> medicos = isDao.getMedicos();
+            List<ItemSencillo> pacientes = isDao.getPacientes();
 %>
 
         <div class="container mt-5 mb-5">
@@ -121,9 +127,9 @@
                             </div>
 
                             <div class="card-foot" style="float: right;">  
-                                <button type="button" class="btn btn-primary">
-                                    <i class="bi bi-calendar-plus"></i> Agregar Cita
-                                </button>                                
+            <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="fa-solid fa-plus me-2"></i>Nueva Cita
+            </button>                              
                             </div>
                         </div>
                     </div>

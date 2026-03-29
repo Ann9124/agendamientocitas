@@ -35,7 +35,6 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-<p><h4>Bienvenido:<%=usuario.getCorreo()%></h4></p>
 <%@ include file="menu.jsp" %>
 <% 
     MedicoDAO medicoDao = new MedicoDAO();
