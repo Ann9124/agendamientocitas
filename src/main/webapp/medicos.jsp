@@ -98,8 +98,7 @@ List<DetalleCitaMedica> citas = citasDao.listarCitasPorDia("2026-03-28");
     </thead>
     <br>
     <br
-        <br>
-    <br>
+      
     <tbody>
 <% 
     for (Medico medico : medicos) {%>
@@ -135,5 +134,6 @@ List<DetalleCitaMedica> citas = citasDao.listarCitasPorDia("2026-03-28");
 <%
     } 
 %>
+
     </body>
 </html>

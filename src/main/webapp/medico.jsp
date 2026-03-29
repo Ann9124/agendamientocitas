@@ -50,11 +50,11 @@
         <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col">
-                    <form method="POST" action="PacienteControl">
+                    <form method="POST" action="MedicoControl">
                         <input type="hidden" name="opcion" value="actualizar" />
                         <div class="card shadow h-100">
                             <div class="card-header bg-primary text-white">
-                                <h4 class="mb-0">Información del Médico</h4>
+                                <h4 class="mb-0">Información del Médico /Editar</h4>
                             </div>
                             <div class="card-body">
                                 <div class="mb-3">
@@ -71,7 +71,7 @@
                                 </div>
                                 
                                 <div class="card-foot" style="float: right;">                            
-                                    <a href="pacientes.jsp" class="btn btn-outline-secondary btn-sm">Volver</a>
+                                    <a href="medicos.jsp" class="btn btn-outline-secondary btn-sm">Volver</a>
                                     <button type="submit" class="btn btn-success btn-sm">Guardar Cambios</button>
                                 </div>
                             </div>

@@ -101,7 +101,7 @@
 } // 3. Si SI hay usuario (else), mostramos el menú y operaciones
 else {
 %>
-        <p>Bienvenido al Sistema</p>
+        
 <%@ include file="menu.jsp" %>
          <div class="d-flex justify-content-center" style="margin-top: 80px;">
         <img src = "img/imagen2.png" alt="HPLAD"

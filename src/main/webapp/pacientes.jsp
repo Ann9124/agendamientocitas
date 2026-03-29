@@ -99,8 +99,6 @@
     </thead>
     <br>
     <br
-        <br>
-    <br>
     <tbody>
 <% 
     for (Paciente paciente : pacientes) {%>

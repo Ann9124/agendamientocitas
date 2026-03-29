@@ -26,7 +26,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-        <div class="container mt-4">
             <h1>Hospital Pedro León Alvarez Diaz</h1>
             <hr />
 
@@ -37,8 +36,6 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-            
-            <p>Bienvenido al sistema: <strong><%=usuario.getCorreo()%></strong></p>
 <%@ include file="menu.jsp" %>
 
 <% 
@@ -56,6 +53,8 @@
     List<ItemSencillo> medicos = isDao.getMedicos();
     List<ItemSencillo> pacientes = isDao.getPacientes();
 %>        
+<br>
+<br>
             <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <form method="POST" action="CitaMedicaControl">
@@ -103,7 +102,7 @@
                 </div>
             </div>
 
-    <div class="row">
+    <div class="row w-100">
         <div class="col">
         <form method="POST" action="citas.jsp">
                         <input type="hidden" name="opcion" value="actualizar" />
@@ -170,7 +169,5 @@
     </div> 
 
 <% } // Cierre del else %>
-        </div>
-
         </body>
 </html>
