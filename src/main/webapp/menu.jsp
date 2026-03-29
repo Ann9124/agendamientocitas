@@ -26,6 +26,9 @@
                   </li>
                   
                   <li class="nav-item">
+                      <a class="nav-link" href="citas.jsp">Citas</a>
+                  </li>
+                  <li class="nav-item">
                       <a class="nav-link" href="LogoutServlet">Salir</a>
                   </li>
                 </ul>

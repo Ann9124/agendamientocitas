@@ -9,12 +9,12 @@
         <servlet-class>servlets.MedicoControl</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CitaMedicaControl</servlet-name>
-        <servlet-class>servlets.CitaMedicaControl</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoginControl</servlet-name>
         <servlet-class>servlets.LoginControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CitaMedicaControl</servlet-name>
+        <servlet-class>servlets.CitaMedicaControl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PacienteControl</servlet-name>
@@ -25,12 +25,12 @@
         <url-pattern>/MedicoControl</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CitaMedicaControl</servlet-name>
-        <url-pattern>/CitaMedicaControl</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LoginControl</servlet-name>
         <url-pattern>/LoginControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CitaMedicaControl</servlet-name>
+        <url-pattern>/CitaMedicaControl</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -58,11 +58,7 @@
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido:</label>
                 <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido" value="<%=medico.getApellido()%>">
-            </div>
-            <div class="mb-3">
-                <label for="fecha nacimiento" class="form-label">Fecha Nacimiento:</label>
-                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci" value="<%=medico.getFechaNaci()%>">
-            </div>
+            </div>          
             <div class="mb-3">
                 <label for="telefono:" class="form-label">Telefono:</label>
                 <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono" value="<%=medico.getTelefono()%>">

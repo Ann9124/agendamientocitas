@@ -2,6 +2,7 @@ drop table Usuario;
 drop table CitaMedica;
 drop table Medico; 
 drop table Paciente;
+drop table EstadoCita;
 
 create table Paciente (id int auto_increment primary key not null, nombre varchar (255) not null, apellido varchar (255) not null, fechaNaci date not null, telefono varchar (255) not null);
 
@@ -11,10 +12,26 @@ telefono varchar (255) not null);
 
 create table Usuario(id int auto_increment primary key not null, correo varchar (100) not null, password varchar(100) not null, rol varchar (20) not null);
 
-create table CitaMedica (id int auto_increment primary key not null, idPaciente int not null, idMedico int not null);
+create table EstadoCita(
+  id int not null primary key auto_increment,
+  nombre varchar(20) not null
+ );
+
+insert into EstadoCita(id, nombre) values(1, 'PROGRAMADA');
+insert into EstadoCita(id, nombre) values(2, 'CANCELADA');
+insert into EstadoCita(id, nombre) values(3, 'REALIZADA');
+
+create table CitaMedica (id int auto_increment primary key not null, 
+idPaciente int not null, 
+idMedico int not null,
+fechaHora dateTime not null default current_time(),
+idEstadoCita int not null default 1
+);
 
 alter table CitaMedica add foreign key (idPaciente) references Paciente(id);
 alter table CitaMedica add foreign key (idMedico) references Medico(id);
+alter table CitaMedica add foreign key (idEstadoCita) references EstadoCita(id);
+
 
 insert into Paciente (nombre, apellido, fechaNaci,telefono) values ('Noa', 'Guzman','1995/02/15','3114057896');
 insert into Paciente (nombre, apellido, fechaNaci,telefono) values ('Laura', 'Gomez','1989/05/28','321059896');

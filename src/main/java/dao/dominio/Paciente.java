@@ -2,7 +2,6 @@ package dao.dominio;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 /*Se crea la clase Paciente*/
 public class Paciente {
@@ -10,7 +9,7 @@ public class Paciente {
     private int id;
     private String nombre;
     private String apellido;
-    private Date fechaNaci;
+    private String fechaNaci;
     private String telefono;
 
     public Paciente(ResultSet res) {
@@ -18,15 +17,15 @@ public class Paciente {
             this.id = res.getInt("id");
             this.nombre = res.getString("nombre");
             this.apellido = res.getString("apellido");
-            this.fechaNaci = res.getDate("fechaNaci");
+            this.fechaNaci = res.getString("fechaNaci");
             this.telefono = res.getString("telefono");
         } catch (SQLException ex) {
-            System.getLogger(Medico.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.getLogger(Paciente.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }
 
     /*Se definen los atributos de la clase*/
-    public Paciente(int id, String nombre, String apellido, Date fechaNaci, String telefono) {
+    public Paciente(int id, String nombre, String apellido, String fechaNaci, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -62,11 +61,11 @@ public class Paciente {
         this.apellido = apellido;
     }
 
-    public Date getFechaNaci() {
+    public String getFechaNaci() {
         return fechaNaci;
     }
 
-    public void setFechaNaci(Date fechaNaci) {
+    public void setFechaNaci(String fechaNaci) {
         this.fechaNaci = fechaNaci;
     }
 
@@ -82,9 +81,4 @@ public class Paciente {
     public String toString() {
         return id + ":" + nombre;
     }
-
-    public void add(Paciente medico) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

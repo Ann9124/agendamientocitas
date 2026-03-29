@@ -33,7 +33,7 @@
         response.sendRedirect("index.jsp");
     } else {
 %>
-<p>Bienvenido al sistema</p>
+<p><h4>Bienvenido:<%%></h4></p>
 <%@ include file="menu.jsp" %>
 <% 
     MedicoDAO medicoDao = new MedicoDAO();
@@ -64,10 +64,7 @@
                 <label for="apellido" class="form-label">Apellido:</label>
                 <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
             </div>
-            <div class="mb-3">
-                <label for="fecha nacimiento" class="form-label">Fecha Nacimiento:</label>
-                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci">
-            </div>
+           
             <div class="mb-3">
                 <label for="telefono:" class="form-label">Telefono:</label>
                 <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
@@ -93,8 +90,7 @@
         <tr>
             <td>ID</td>
             <td>NOMBRE</td>
-            <td>APELLIDO</td>
-            <td>FECHA NACIMIENTO</td>
+            <td>APELLIDO</td>          
             <td>TELEFONO</td>
             <td></td>
             <td></td>
@@ -111,7 +107,6 @@
         <td><%=medico.getId()%> </td>
         <td><%=medico.getNombre()%> </td>
         <td><%=medico.getApellido()%> </td>
-        <td><%=medico.getFechaNaci()%> </td>
         <td><%=medico.getTelefono()%> </td>
         <td><form action="MedicoControl" method="POST">
     <button type="submit" class="btn-icon">

@@ -58,19 +58,19 @@
         
             <div class="mb-3 mt-3">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="nombre" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
             </div>
             <div class="mb-3">
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input type="apellido" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
+                <input type="text" class="form-control" id="apellido" placeholder="Apellido:" name="apellido">
             </div>
             <div class="mb-3">
                 <label for="fecha nacimiento" class="form-label">Fecha Nacimiento:</label>
-                <input type="fecha nacimiento" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci">
+                <input type="date" class="form-control" id="fechaNaci" placeholder="Fecha Nacimiento" name="fechaNaci">
             </div>
             <div class="mb-3">
                 <label for="telefono:" class="form-label">Telefono:</label>
-                <input type="telefono:" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
+                <input type="text" class="form-control" id="telefono" placeholder="Telefono:" name="telefono">
             </div>                    
       </div>
      <input type="hidden" name ="opcion" value ="agregar" />

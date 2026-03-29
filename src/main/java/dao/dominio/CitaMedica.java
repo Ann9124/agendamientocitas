@@ -1,28 +1,41 @@
 package dao.dominio;
 
 import java.sql.ResultSet;
-import java.util.Date;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*Se crea la clase CitaMedica*/
 public class CitaMedica {
 
     private int id;
-    private int idPaciente;
-    private int idMedico;
+    private String idPaciente;
+    private String idMedico;
+    private String fechaHora;
+    private String idEstadoCita = "1";
 
     public CitaMedica(ResultSet res) {
+        try {
+            this.id = res.getInt("id");
+            this.idPaciente = res.getString("idPaciente");
+            this.idMedico = res.getString("idMedico");
+            this.fechaHora = res.getString("fechaHora");
+            this.idEstadoCita = res.getString("idEstadoCita");
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalleCitaMedica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-/*Se definen atributos*/
-    public CitaMedica(int id, int idPaciente, int idMedico) {
+
+    public CitaMedica(int id, String idPaciente, String idMedico) {
         this.id = id;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
     }
 
     public CitaMedica() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-/*Se crean métodos get y set*/
+
+    /*Se crean métodos get y set*/
     public int getId() {
         return id;
     }
@@ -31,35 +44,35 @@ public class CitaMedica {
         this.id = id;
     }
 
-    public int getIdPaciente() {
+    public String getIdPaciente() {
         return idPaciente;
     }
 
-    public void setIdPaciente(int idPaciente) {
+    public void setIdPaciente(String idPaciente) {
         this.idPaciente = idPaciente;
     }
 
-    public int getIdMedico() {
+    public String getIdMedico() {
         return idMedico;
     }
 
-    public void setIdMedico(int idMedico) {
+    public void setIdMedico(String idMedico) {
         this.idMedico = idMedico;
     }
 
-    public int getIdpaciente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getFechaHora() {
+        return fechaHora;
     }
 
-    public int getIdmedico() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setFechaHora(String fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
-    public void setIdpaciente(int idPaciente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getIdEstadoCita() {
+        return idEstadoCita;
     }
 
-    public void setIdmedico(int idMedico) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setIdEstadoCita(String idEstadoCita) {
+        this.idEstadoCita = idEstadoCita;
     }
 }
