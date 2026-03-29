@@ -24,7 +24,7 @@ insert into EstadoCita(id, nombre) values(3, 'REALIZADA');
 create table CitaMedica (id int auto_increment primary key not null, 
 idPaciente int not null, 
 idMedico int not null,
-fechaHora dateTime not null default current_time(),
+fechaHora dateTime not null,
 idEstadoCita int not null default 1
 );
 
@@ -49,7 +49,7 @@ insert into Medico (nombre, apellido, telefono) values ('Carla','Velez','3114526
 insert into Medico (nombre, apellido, telefono) values ('Luna','Rpdriguez','302956987');
 insert into Medico (nombre, apellido, telefono) values ('Fernando','Sarria','3025468978');
 
-insert into CitaMedica (idPaciente,idMedico) values (1,4);
+-- insert into CitaMedica (idPaciente,idMedico) values (1,4);
 
 insert into Usuario (correo, password,rol) values ('admin@hospital.com','1234','admin');
 insert into Usuario (correo, password, rol) values ('medico@hospital.com', 'medico123', 'medico');
