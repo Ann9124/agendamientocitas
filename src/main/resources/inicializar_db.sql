@@ -1,4 +1,6 @@
-drop table Usuario; 
+use ips;
+
+drop if exists table Usuario; 
 drop table CitaMedica;
 drop table Medico; 
 drop table Paciente;
