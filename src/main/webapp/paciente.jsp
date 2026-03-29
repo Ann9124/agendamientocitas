@@ -25,22 +25,22 @@
         <h1>Hospital Pedro León Alvarez Diaz</h1>
         <hr />
 
-        <%
-            Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
+<%
+    Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
 
-            if (usuario == null) {
-                response.sendRedirect("index.jsp");
-            } else {
-        %>
+    if (usuario == null) {
+        response.sendRedirect("index.jsp");
+    } else {
+%>
         
-        <%@ include file="menu.jsp" %>
+<%@ include file="menu.jsp" %>
         
-        <% 
-            Integer idPaciente = Integer.valueOf(request.getParameter("idPacienteaConsultar"));
-            session.setAttribute("IDPACIENTEMODIFICAR", idPaciente);
-            PacienteDAO pacienteDao = new PacienteDAO();
-            Paciente paciente = pacienteDao.getItem(idPaciente);
-        %>
+<% 
+    Integer idPaciente = Integer.valueOf(request.getParameter("idPacienteaConsultar"));
+    session.setAttribute("IDPACIENTEMODIFICAR", idPaciente);
+    PacienteDAO pacienteDao = new PacienteDAO();
+    Paciente paciente = pacienteDao.getItem(idPaciente);
+%>
 
         <div class="container mt-5 mb-5">
             <div class="row">
@@ -78,10 +78,10 @@
                     </form>
                 </div>
 
-                <% 
-                    DetalleCitaMedicaDAO citasDao = new DetalleCitaMedicaDAO();
-                    List<DetalleCitaMedica> citas = citasDao.listarCitasPorPaciente(idPaciente);
-                %>             
+<% 
+    DetalleCitaMedicaDAO citasDao = new DetalleCitaMedicaDAO();
+    List<DetalleCitaMedica> citas = citasDao.listarCitasPorPaciente(idPaciente);
+%>             
                                         
                 <div class="col">
                     <div class="card shadow h-100">
@@ -99,13 +99,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% for (DetalleCitaMedica cita : citas) { %>
+<% for (DetalleCitaMedica cita : citas) { %>
                                             <tr>
                                                 <td><%=cita.getFechaHora()%></td>
                                                 <td><%=cita.getNombreMedico()%></td>
                                                 <td><%=cita.getEstado()%></td>
+                                                
+                                                <td class="text-center">
+                                                    <form action="CitaMedicaControl" method="POST" style="display:inline;">
+                                                        <input type="hidden" name="opcion" value="cancelarpaciente">
+                                                        <input type="hidden" name="idCitaACancelar" value="<%=cita.getId()%>"> 
+                                                        <button type="submit" class="btn btn-link text-danger p-0" title="Cancelar Cita">
+                                                            <i class="fa-solid fa-calendar-xmark"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
-                                        <% } %>
+<% } %>
                                     </tbody>
                                 </table>
                             </div>
@@ -121,8 +131,8 @@
             </div>
         </div>
               
-        <% 
-            } // Cierre del else
-        %>
+<% 
+    } // Cierre del else
+%>
     </body>
 </html>

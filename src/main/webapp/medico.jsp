@@ -100,6 +100,16 @@
                                                 <td><%=cita.getFechaHora()%></td>
                                                 <td><%=cita.getNombrePaciente()%></td>
                                                 <td><%=cita.getEstado()%></td>
+                                                
+                                                <td class="text-center">
+                                                    <form action="CitaMedicaControl" method="POST" style="display:inline;">
+                                                        <input type="hidden" name="opcion" value="cancelarmedico">
+                                                        <input type="hidden" name="idCitaACancelar" value="<%=cita.getId()%>"> 
+                                                        <button type="submit" class="btn btn-link text-danger p-0" title="Cancelar Cita">
+                                                            <i class="fa-solid fa-calendar-xmark"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         <% } %>
                                     </tbody>

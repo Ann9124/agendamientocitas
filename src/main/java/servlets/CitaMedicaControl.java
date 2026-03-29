@@ -20,17 +20,28 @@ public class CitaMedicaControl extends HttpServlet {
         switch (opcion) {
             case "crear":
                 insertar(request, response);
+                response.sendRedirect("citas.jsp");
                 break;
 
             case "cancelar":
                 cancelar(request, response);
+                response.sendRedirect("citas.jsp");
+                break;
+
+            case "cancelarmedico":
+                cancelar(request, response);
+                response.sendRedirect("medico.jsp?idMedicoaConsultar=" + request.getSession().getAttribute("IDMEDICOMODIFICAR"));
+                break;
+
+            case "cancelarpaciente":
+                cancelar(request, response);
+                response.sendRedirect("paciente.jsp?idPacienteaConsultar=" + request.getSession().getAttribute("IDPACIENTEMODIFICAR"));
                 break;
 
             default:
                 break;
         }
 
-        response.sendRedirect("citas.jsp");
     }
 
     protected void insertar(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +55,7 @@ public class CitaMedicaControl extends HttpServlet {
     }
 
     private void cancelar(HttpServletRequest request, HttpServletResponse response) {
-         cmdao.cancelar(Integer.parseInt(request.getParameter("idCitaACancelar")));
+        cmdao.cancelar(Integer.parseInt(request.getParameter("idCitaACancelar")));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
