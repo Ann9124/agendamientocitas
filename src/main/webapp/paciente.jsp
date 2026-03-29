@@ -78,9 +78,9 @@
                 </div>
             </div>
 
-           <% 
-    DetalleCitaMedicaDAO citasDao = new DetalleCitaMedicaDAO();
-    List<DetalleCitaMedica> citas = citasDao.listarCitasPorPaciente(idPaciente);
+<% 
+DetalleCitaMedicaDAO citasDao = new DetalleCitaMedicaDAO();
+List<DetalleCitaMedica> citas = citasDao.listarCitasPorPaciente(idPaciente);
 %>             
                         
             <div class="col-lg-5 mb-4">
@@ -99,13 +99,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (DetalleCitaMedica cita : citas) {%>
+<% for (DetalleCitaMedica cita : citas) {%>
                                     <tr>
                                         <td><%=cita.getFechaHora()%></td>
                                         <td><%=cita.getNombreMedico()%></td>
                                         <td><%=cita.getEstado()%></td>
                                     </tr>
-                                    <% } %>
+<% } %>
                                 </tbody>
                             </table>
                         </div>
@@ -114,10 +114,7 @@
                             <div class="d-grid gap-2">
                                 <button type="button" class="btn btn-primary">
                                     <i class="bi bi-calendar-plus"></i> Agregar Cita
-                                </button>
-                                <button type="button" class="btn btn-outline-danger">
-                                    <i class="bi bi-calendar-x"></i> Eliminar Cita
-                                </button>
+                                </button>                                
                             </div>
                         </div>
                     </div>

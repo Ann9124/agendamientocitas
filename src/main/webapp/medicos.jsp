@@ -92,8 +92,8 @@
             <td>NOMBRE</td>
             <td>APELLIDO</td>          
             <td>TELEFONO</td>
-            <td></td>
-            <td></td>
+            <td>ELIMINAR</td>
+            <td>EDITAR</td>
         </tr>
     </thead>
     <br>

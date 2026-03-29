@@ -96,8 +96,8 @@
             <td>APELLIDO</td>
             <td>FECHA NACIMIENTO</td>
             <td>TELEFONO</td>
-            <td></td>
-            <td></td>
+            <td>ELIMINAR</td>
+            <td>EDITAR</td>
         </tr>
     </thead>
     <br>
