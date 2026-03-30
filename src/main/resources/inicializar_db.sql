@@ -1,10 +1,15 @@
+
+drop database if exists ips;
+create database ips DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+
+
 use ips;
 
-drop if exists table Usuario; 
-drop table CitaMedica;
-drop table Medico; 
-drop table Paciente;
-drop table EstadoCita;
+drop table if exists Usuario; 
+drop table if exists CitaMedica;
+drop table if exists Medico; 
+drop table if exists Paciente;
+drop table if exists EstadoCita;
 
 create table Paciente (id int auto_increment primary key not null, nombre varchar (255) not null, apellido varchar (255) not null, fechaNaci date not null, telefono varchar (255) not null);
 
