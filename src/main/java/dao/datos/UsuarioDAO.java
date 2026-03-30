@@ -1,6 +1,7 @@
 package dao.datos;
 
 import dao.dominio.Usuario;
+import dao.datos.ConexionBD;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class UsuarioDAO {
 
     public Usuario validar(String correo, String password) {
 
-        List<Usuario> usuario = new ArrayList<>();
+        List<Usuario> usuarios = new ArrayList<>();
         try {
             Connection conex = ConexionBD.getconex();
             try (PreparedStatement sentencia = conex.prepareStatement("select * from Usuario where correo=? and password=?");) {
@@ -17,7 +18,7 @@ public class UsuarioDAO {
                 sentencia.setString(2, password);
                 try (ResultSet res = sentencia.executeQuery()) {
                     while (res.next()) {
-                        usuario.add(new Usuario(res));
+                        usuarios.add(new Usuario(res));
                     }
                 }
             }
@@ -25,7 +26,12 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         }
-
-        return usuario.get(0);
+        if (!usuarios.isEmpty()) {
+            // Si la lista NO está vacía, devuelve el primero
+            return usuarios.get(0);
+        } else {
+            // Si está vacía, devuelve null
+            return null;
+        }
     }
 }

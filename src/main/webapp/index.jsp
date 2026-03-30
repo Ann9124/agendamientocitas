@@ -73,8 +73,6 @@
         </style>
     </head>
     <body> 
-        <h1>Hospital Pedro León Alvarez Diaz</h1>
-        <hr/>
 <%
     // 1. Intentamos obtener el usuario de la sesión
     Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
@@ -82,6 +80,9 @@
     // 2. Si NO hay usuario, mostramos el formulario de Login
     if (usuario == null) {
 %>
+        <h1>Hospital Pedro León Alvarez Diaz</h1>
+        <hr/>
+
         <form action="LoginControl" method="POST">
             <h3>Iniciar Sesión</h3>
             <label>Correo:</label>

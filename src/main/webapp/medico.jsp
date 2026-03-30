@@ -23,10 +23,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </head>
-    <body> 
-        <h1>Hospital Pedro León Alvarez Diaz</h1>
-        <hr />
-
+     
+        
         <%
             Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
 
@@ -174,5 +172,5 @@
         <% 
             } // Cierre del else
         %>
-    </body>
+    
 </html>

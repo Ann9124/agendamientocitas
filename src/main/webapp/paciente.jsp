@@ -24,8 +24,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body> 
-        <h1>Hospital Pedro León Alvarez Diaz</h1>
-        <hr />
+        
 
 <%
     Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
@@ -67,7 +66,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="fechaNaci" class="form-label">Fecha Nacimiento:</label>
-                                    <input type="date" class="form-control" id="fechaNaci" name="fechaNaci" value="<%=paciente.getFechaNaci()%>">
+                                    <input type="text" class="form-control" id="fechaNaci" name="fechaNaci" value="<%=paciente.getFechaNaci()%>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="telefono" class="form-label">Teléfono:</label>

@@ -28,6 +28,11 @@ public class CitaMedicaControl extends HttpServlet {
                 response.sendRedirect("medico.jsp?idMedicoaConsultar=" + request.getSession().getAttribute("IDMEDICOMODIFICAR"));
                 break;
 
+            case "crearDesdePaciente":
+                insertar(request, response);
+                response.sendRedirect("paciente.jsp?idPacienteaConsultar=" + request.getSession().getAttribute("IDPACIENTEMODIFICAR"));
+                break;
+
             case "cancelar":
                 cancelar(request, response);
                 response.sendRedirect("citas.jsp");

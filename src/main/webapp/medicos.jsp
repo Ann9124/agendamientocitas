@@ -24,9 +24,7 @@
         </style>
     </head>
     <body> 
-        <h1>Hospital Pedro León Alvarez Diaz</h1>
-        <hr />
-       
+              
 <%
     Usuario usuario = (Usuario) session.getAttribute("Usuarioactivo");
 
